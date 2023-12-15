@@ -77,19 +77,19 @@ class AutoCorrectionOutputParser(StructuredOutputParser):
             result = self._fix(instructions=instructions, result = text, error = e)
         # check key, value
         retry_number = 0
+        last_text = text
         while retry_number < self.max_retry:
             error = ""
             for check in self.check_list:
                 error += self._attr_check(result=result, check_dict=check)
             if len(error) > 0:
                 retry_number += 1
-                fix_result = self._fix(instructions=instructions, result = text, error = error)
+                last_text = self._fix(instructions=instructions, result = last_text, error = error)
                 # process format error
                 try:
-                    fix_result = parse_and_check_json_markdown(fix_result, expected_keys)
+                    fix_result = parse_and_check_json_markdown(last_text, expected_keys)
                 except Exception as e:
-                    
-                    fix_result = self._fix(instructions=instructions, result = fix_result, error = e)
+                    fix_result = self._fix(instructions=instructions, result =last_text, error = e)
                 result.update(fix_result)
             else:
                 break

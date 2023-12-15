@@ -19,7 +19,8 @@ Desc: `AutoCorrectionOutputParser` is an open-source script designed to address 
 
 输入:
 ```markdown
-Please analysis the sentence's emotion and action.sentence: Despite feeling a mix of excitement and anxiety, I confidently approached the stage, took a deep breath, and delivered a heartfelt speech about the importance of mental health awareness in today's society.
+Please analysis the sentence's emotion, action and topic.
+sentence: Despite feeling a mix of excitement and anxiety, I confidently approached the stage, took a deep breath, and delivered a heartfelt speech about the importance of mental health awareness in today's society.
 
 The output should be a markdown code snippet formatted in the following schema, including the leading and trailing "```json" and "```":
 
